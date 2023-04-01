@@ -45,21 +45,21 @@ public class CreateBuilding : MonoBehaviour
         }
     }
 
-    public void Clicked(string name)
+    public void Clicked(string tag)
     {
         if (CompareTag("AreaBuild") && !m_isBuilding && _buildingName != null)
         {
-            switch (name)
+            switch (tag)
             {
-                case "Eglise":
+                case "0":
                     m_isBuilding = true;
                     building = Instantiate(_building[0]);
                     break;
-                case "Field":
+                case "1":
                     m_isBuilding = true;
                     building = Instantiate(_building[1]);
                     break;
-                case "Hostel":
+                case "2":
                     m_isBuilding = true;
                     building = Instantiate(_building[2]);
                     break;
