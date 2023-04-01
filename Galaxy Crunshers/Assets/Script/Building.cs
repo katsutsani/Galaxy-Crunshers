@@ -9,7 +9,6 @@ using UnityEngine.Events;
 
 public class Building : CreateBuilding
 {
-
     public TextMeshPro m_text;
     public float m_endTimer;
     public GameObject _actualArea;
