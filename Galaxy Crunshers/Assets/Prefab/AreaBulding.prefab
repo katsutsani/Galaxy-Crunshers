@@ -105,6 +105,7 @@ MonoBehaviour:
   - {fileID: 8129326256733412797, guid: a4a8c76bca9b84941af34159bc55661f, type: 3}
   - {fileID: 8129326256733412797, guid: 8f405748f09e08c4287d7439a6a009a0, type: 3}
   _showShop: {fileID: 3471644973820349215, guid: d23b9e4c3d64f8d488c97374f4a236b0, type: 3}
+  m_allBuldings: {fileID: 0}
 --- !u!60 &-2871837153138109610
 PolygonCollider2D:
   m_ObjectHideFlags: 0

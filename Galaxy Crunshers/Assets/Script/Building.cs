@@ -12,18 +12,15 @@ public class Building : CreateBuilding
 {
     public TextMeshPro m_text;
     public float m_endTimer;
-    public GameObject _actualArea;
-
+    public GameObject m_actualArea;
 
     private bool _isArea;
     private bool _isChange;
-    //private Collider2D _tCol;
     private Collider2D _pCol;
 
 
     void Start()
     {
-        //_tCol = GetComponent<Collider2D>();
         m_text.GetComponent<TextMeshPro>();
         _isArea = true;
         _isChange = false;
@@ -32,6 +29,7 @@ public class Building : CreateBuilding
     void Update()
     {
         SetTimer();
+        
     }
 
 
@@ -53,6 +51,8 @@ public class Building : CreateBuilding
             }            
         }
     }
+    
+
 
     void OnMouseDrag()
     {
@@ -60,9 +60,9 @@ public class Building : CreateBuilding
 
         transform.position = mousePosition;
 
-        if(_actualArea != null && _isArea)
+        if(m_actualArea != null && _isArea)
         {
-            _actualArea.GetComponent<CreateBuilding>().m_isBuilding = false;
+            m_actualArea.GetComponent<CreateBuilding>().m_isBuilding = false;
             _isArea = false;
         }
     }
@@ -71,27 +71,38 @@ public class Building : CreateBuilding
     {
         if (!_isChange)
         {
-            transform.position = _actualArea.transform.position;
-            _actualArea.GetComponent<CreateBuilding>().m_isBuilding = true;
+            transform.position = m_actualArea.transform.position;
+            m_actualArea.GetComponent<CreateBuilding>().m_isBuilding = true;
             _isArea = true;
 
         }
         else
         {
             transform.position = _pCol.transform.position;
-            _actualArea.GetComponent<CreateBuilding>().m_isBuilding = true;
+            _pCol.GetComponent<CreateBuilding>().m_isBuilding = true;
+            m_actualArea.GetComponent<CreateBuilding>().m_isBuilding = false;
+            m_actualArea = _pCol.gameObject;
+            m_actualArea.GetComponent<CreateBuilding>().m_isBuilding = true;
         }
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //_pCol = collision;
         if(collision.tag == "AreaBuild")
         {
             _pCol = collision;
-            _isChange = true;
+            if (!_pCol.gameObject.GetComponent<CreateBuilding>().m_isBuilding)
+            {
+                _isChange = true;
+            }
+            else
+            {
+                _isChange = false;
+                
+            }
             _pCol.GetComponent<Collider2D>().enabled = true;
+
         }
 
     }
