@@ -17,11 +17,18 @@ public class Building : CreateBuilding
     private bool _isArea;
     private bool _isChange;
     private Collider2D _pCol;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Sprite[] _newSprite;
 
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.color = Color.white;
+    }
 
     void Start()
     {
-        m_text.GetComponent<TextMeshPro>();
+         m_text.GetComponent<TextMeshPro>();
         _isArea = true;
         _isChange = false;
     }
@@ -29,7 +36,10 @@ public class Building : CreateBuilding
     void Update()
     {
         SetTimer();
-        
+        if(m_endTimer <= 0)
+        {
+            _spriteRenderer.sprite = _newSprite[1];
+        }
     }
 
 
@@ -41,6 +51,7 @@ public class Building : CreateBuilding
             time += Time.deltaTime;
             if(time < m_endTimer)
             {
+                _spriteRenderer.sprite = _newSprite[0];
                 m_endTimer -= time;
                 int minute = (int)m_endTimer / 60;
                 int second = (int)m_endTimer % 60;
