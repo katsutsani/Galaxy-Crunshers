@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -36,10 +37,22 @@ public class Bulding : CreateBulding
                 m_endTimer -= time;
                 int minute = (int)m_endTimer / 60;
                 int second = (int)m_endTimer % 60;
-                m_text.text = minute.ToString() + ":" + second.ToString();
+                if(second < 10)
+                    m_text.text = minute.ToString() + ":" + "0" + second.ToString();
+                else
+                    m_text.text = minute.ToString() + ":" + second.ToString();
             }            
         }
     }
+
+    void OnMouseDrag()
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        transform.position = mousePosition;
+    }
+
+
 }
 
 
