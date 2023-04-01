@@ -5,7 +5,7 @@ public class Diamond : MonoBehaviour
 {
     public Text diamond_num;
 
-    int diamond = 10;
+    int diamond = 999999999;
 
     private void Update()
     {
