@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class AddCharacter : MonoBehaviour
 
     private GameObject _instanceCharacter;
     [SerializeField] private GameObject[] _character;
+    public static event Action<int> OnCharacterAdded;
+    private int price;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +29,8 @@ public class AddCharacter : MonoBehaviour
         {
             case "0Character":
                 _instanceCharacter = Instantiate(_character[0]);
+                price = 100;
+                OnCharacterAdded?.Invoke(price);
                 break;
             case "1Character":
                 _instanceCharacter = Instantiate(_character[1]);
