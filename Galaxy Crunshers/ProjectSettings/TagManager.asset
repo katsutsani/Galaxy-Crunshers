@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Bulding
   - AreaBuild
+  - 1
+  - 2
+  - 0
   layers:
   - Default
   - TransparentFX

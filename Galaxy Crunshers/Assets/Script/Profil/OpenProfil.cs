@@ -26,7 +26,7 @@ public class OpenProfil : MonoBehaviour
 
             foreach (SpriteRenderer profil in profils)
             {
-                if (profil.transform.position.y > -9 && profil.transform.position.y < -2)
+                if (profil.transform.position.y > -6 && profil.transform.position.y < 3)
                 {
                     profil.GetComponent<SpriteRenderer>().enabled = true;
                 }

@@ -9,6 +9,6 @@ public class ClickableImage : MonoBehaviour
 
     public void GetClicked()
     {
-        Name?.Invoke(gameObject.name);
+        Name?.Invoke(gameObject.tag);
     }
 }
