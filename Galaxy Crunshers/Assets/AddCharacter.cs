@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+public class AddCharacter : MonoBehaviour
+{
+
+    private GameObject _instanceCharacter;
+    [SerializeField] private GameObject[] _character;
+    // Start is called before the first frame update
+    void Start()
+    {
+        ClickableImage.tagCharacter += BuyCharacter;
+    }
+
+    private void OnDestroy()
+    {
+        ClickableImage.tagCharacter -= BuyCharacter;
+    }
+
+    public void BuyCharacter(string tag)
+    {
+        switch (tag)
+        {
+            case "0Character":
+                _instanceCharacter = Instantiate(_character[0]);
+                break;
+            case "1Character":
+                _instanceCharacter = Instantiate(_character[1]);
+                break;
+            case "2Character":
+                _instanceCharacter = Instantiate(_character[2]);
+                break;
+            case "3Character":
+                _instanceCharacter = Instantiate(_character[3]);
+                break;
+
+        }
+        _instanceCharacter.transform.SetParent(transform);
+        _instanceCharacter.transform.position = Vector3.zero;
+
+    }
+}

@@ -5,10 +5,24 @@ using UnityEngine;
 
 public class ClickableImage : MonoBehaviour
 {
-    public static event Action<string> Name;
+    public static event Action<string> tagBuilding;
+    public static event Action<string> tagCharacter;
+    public static event Action<string> tagDiamond;
 
     public void GetClicked()
     {
-        Name?.Invoke(gameObject.tag);
+        if (gameObject.tag.Contains("Building")) 
+        {
+            tagBuilding?.Invoke(gameObject.tag);
+        }
+        else if (gameObject.tag.Contains("Character"))
+        {
+            tagCharacter?.Invoke(gameObject.tag);
+        }
+        else if (gameObject.tag.Contains("Diamonds"))
+        {
+            tagDiamond?.Invoke(gameObject.tag);
+        }
+        
     }
 }

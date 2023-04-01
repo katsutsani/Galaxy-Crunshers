@@ -13,7 +13,7 @@ public class CreateBuilding : MonoBehaviour
 
     void Start()
     {
-        ClickableImage.Name += Clicked;
+        ClickableImage.tagBuilding += Clicked;
         ShowShop.removeName += RemoveName;
         m_isBuilding = false;
        
@@ -21,7 +21,7 @@ public class CreateBuilding : MonoBehaviour
 
     private void OnDestroy()
     {
-        ClickableImage.Name -= Clicked;
+        ClickableImage.tagBuilding -= Clicked;
         ShowShop.removeName -= RemoveName;
     }
 
@@ -51,15 +51,15 @@ public class CreateBuilding : MonoBehaviour
         {
             switch (tag)
             {
-                case "0":
+                case "0Building":
                     m_isBuilding = true;
                     building = Instantiate(_building[0]);
                     break;
-                case "1":
+                case "1Building":
                     m_isBuilding = true;
                     building = Instantiate(_building[1]);
                     break;
-                case "2":
+                case "2Building":
                     m_isBuilding = true;
                     building = Instantiate(_building[2]);
                     break;

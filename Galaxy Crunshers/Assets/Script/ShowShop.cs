@@ -32,8 +32,7 @@ public class ShowShop : MonoBehaviour
         ChangeShop.SetActive(false);
         DiamondsShop.SetActive(false);
         BuildingShop.SetActive(false);
-        CharacterShop.SetActive(false);
-        JustOpenedShop.SetActive(true);
+        CharacterShop.SetActive(true);
         reload?.Invoke();
         removeName?.Invoke();
     }
