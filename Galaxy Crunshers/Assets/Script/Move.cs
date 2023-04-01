@@ -52,6 +52,11 @@ public class Move : MonoBehaviour
         StartCoroutine(Idle());
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ChangeDir();
+    }
+
     void ChangeDir()
     {
         int direction = UnityEngine.Random.Range(0, 3);
