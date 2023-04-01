@@ -10,6 +10,8 @@ public class CreateBuilding : MonoBehaviour
     [SerializeField] private ShowShop _showShop;
     private GameObject building;
     private string _buildingName;
+    public GameObject m_allBuldings;
+
 
     void Start()
     {
@@ -65,9 +67,9 @@ public class CreateBuilding : MonoBehaviour
                     break;
 
             }
-            building.transform.SetParent(transform.parent);
+            building.transform.SetParent(m_allBuldings.transform);
             building.transform.position = transform.position;
-            building.GetComponent<Building>()._actualArea = gameObject;
+            building.GetComponent<Building>().m_actualArea = gameObject;
         }
     }
 }
