@@ -72,18 +72,22 @@ public class Move : MonoBehaviour
             case 0:
                 x = -0.5f;
                 y = -0.25f;
+                transform.rotation = new Quaternion(0, 0, 0, 0);
                 break;
             case 1:
                 x = 0.5f;
                 y = 0.25f;
+                transform.rotation = new Quaternion(0,180,0,0);
                 break;
             case 2:
                 x = -0.5f;
                 y = 0.25f;
+                transform.rotation = new Quaternion(0, 0, 0, 0);
                 break;
             case 3:
                 x = 0.5f;
                 y = -0.25f;
+                transform.rotation = new Quaternion(0, 180, 0, 0);
                 break;
             default:
                 break;
