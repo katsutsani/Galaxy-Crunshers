@@ -6,9 +6,16 @@ TagManager:
   tags:
   - Bulding
   - AreaBuild
-  - 1
-  - 2
-  - 0
+  - 0Building
+  - 1Building
+  - 2Building
+  - 0Character
+  - 1Character
+  - 2Character
+  - 3Character
+  - 0Diamonds
+  - 1Diamonds
+  - 2Diamonds
   layers:
   - Default
   - TransparentFX
