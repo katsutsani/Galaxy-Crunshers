@@ -79,6 +79,7 @@ public class Building : CreateBuilding
         else
         {
             transform.position = _pCol.transform.position;
+            _actualArea.GetComponent<CreateBuilding>().m_isBuilding = true;
         }
 
     }

@@ -53,15 +53,15 @@ public class CreateBuilding : MonoBehaviour
             {
                 case "Eglise":
                     m_isBuilding = true;
-                    building = Instantiate(_building[1]);
+                    building = Instantiate(_building[0]);
                     break;
                 case "Field":
                     m_isBuilding = true;
-                    building = Instantiate(_building[2]);
+                    building = Instantiate(_building[1]);
                     break;
                 case "Hostel":
                     m_isBuilding = true;
-                    building = Instantiate(_building[3]);
+                    building = Instantiate(_building[2]);
                     break;
 
             }
