@@ -51,7 +51,7 @@ public class CreateBuilding : MonoBehaviour
         {
             switch (name)
             {
-                case "Church":
+                case "Eglise":
                     m_isBuilding = true;
                     building = Instantiate(_building[1]);
                     break;
