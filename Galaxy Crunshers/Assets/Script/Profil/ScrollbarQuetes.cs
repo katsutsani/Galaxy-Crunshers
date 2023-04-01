@@ -18,7 +18,7 @@ public class ScrollbarQuetes : MonoBehaviour
         {
             foreach (SpriteRenderer profil in profils)
             {
-                profil.transform.position += new Vector3(0, scroll * 3, 0);
+                profil.transform.position += new Vector3(0, 0.5f * 3, 0);
                 if (profil.name == "Quete_name5")
                 {
                     profil.GetComponent<SpriteRenderer>().enabled = true;
@@ -35,7 +35,7 @@ public class ScrollbarQuetes : MonoBehaviour
         {
             foreach (SpriteRenderer profil in profils)
             {
-                profil.transform.position += new Vector3(0, (scroll + 0.3f) * 1.5f, 0);
+                profil.transform.position += new Vector3(0, 1 * 1.5f, 0);
                 if (profil.name == "Quete_name6")
                 {
                     profil.GetComponent<SpriteRenderer>().enabled = true;
@@ -47,6 +47,41 @@ public class ScrollbarQuetes : MonoBehaviour
             }
             first = false;
             second = false;
+        }
+
+        if (scroll <= 0.5 && first == false && second == true)
+        {
+            foreach (SpriteRenderer profil in profils)
+            {
+                profil.transform.position -= new Vector3(0, 0.5f * 3, 0);
+                if (profil.name == "Quete_name")
+                {
+                    profil.GetComponent<SpriteRenderer>().enabled = true;
+                }
+                if (profil.name == "Quete_name5")
+                {
+                    profil.GetComponent<SpriteRenderer>().enabled = false;
+                }
+            }
+            first = true;
+            second = false;
+        }
+        if (scroll <= 0.7 && second == false && first == false)
+        {
+            foreach (SpriteRenderer profil in profils)
+            {
+                profil.transform.position -= new Vector3(0, 1 * 1.5f, 0);
+                if (profil.name == "Quete_name1")
+                {
+                    profil.GetComponent<SpriteRenderer>().enabled = true;
+                }
+                if (profil.name == "Quete_name6")
+                {
+                    profil.GetComponent<SpriteRenderer>().enabled = false;
+                }
+            }
+            first = false;
+            second = true;
         }
     }
 }
