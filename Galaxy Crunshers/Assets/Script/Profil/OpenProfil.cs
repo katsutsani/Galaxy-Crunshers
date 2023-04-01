@@ -5,7 +5,14 @@ using UnityEngine.Profiling;
 public class OpenProfil : MonoBehaviour
 {
     [SerializeField] private bool profilOpen = false;
-    public static event Action<bool> OnOpenProfil;
+    [SerializeField] private bool goal1 = false;
+    [SerializeField] private bool goal2 = false;
+    [SerializeField] private bool goal3 = false;
+    [SerializeField] private bool goal4 = false;
+    [SerializeField] private bool goal5 = false;
+    [SerializeField] private bool goal6 = false;
+    [SerializeField] private bool goal7 = false;
+    public static event Action<bool, bool, bool, bool, bool, bool, bool> OnOpenProfil;
 
     public void OpenProfilPlayer()
     {
@@ -19,11 +26,8 @@ public class OpenProfil : MonoBehaviour
             {
                 profil.GetComponent<SpriteRenderer>().enabled = true;
             }
-            if(profilOpen == false)
-            {
-                OnOpenProfil?.Invoke(profilOpen);
-            }
             profilOpen = true;
+            OnOpenProfil?.Invoke(goal1, goal2, goal3, goal4, goal5, goal6, goal7);
         }
         else if (profilOpen == true)
         {

@@ -1,30 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GoalFinish : MonoBehaviour
 {
     [SerializeField] GameObject button;
-    // Start is called before the first frame update
+
     void Start()
     {
-        OpenProfil.OnOpenProfil += OpenProfil_OnOpenProfil;
+        OpenProfil.OnOpenProfil += VisibleButton;
     }
 
-    private void OpenProfil_OnOpenProfil(bool obj)
+    private void VisibleButton(bool goal1, bool goal2, bool goal3, bool goal4, bool goal5, bool goal6, bool goal7)
     {
-        //if la quette est fini 
-        button.SetActive(true);
+        if (goal1 == true)
+        {
+            button.SetActive(true);
+        }
     }
 
     private void OnDisable()
     {
-        OpenProfil.OnOpenProfil -= OpenProfil_OnOpenProfil;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        OpenProfil.OnOpenProfil -= VisibleButton;
     }
 }
