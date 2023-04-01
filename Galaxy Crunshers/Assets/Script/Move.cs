@@ -20,6 +20,11 @@ public class Move : MonoBehaviour
         StartCoroutine(Idle());
     }
 
+    private void OnDestroy()
+    {
+        ShowShop.reload -= reload;
+    }
+
     // Update is called once per frame
 
     public void reload()

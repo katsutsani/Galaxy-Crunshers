@@ -7,13 +7,22 @@ public class CreateBulding : MonoBehaviour
 {
     public bool m_isBulding;
     public GameObject[] _bulding;
-
+    [SerializeField] private ShowShop _showShop;
     private GameObject bulding;
+    private string _buldingName;
 
     void Start()
     {
+        ClickableImage.Name += Clicked;
+        ShowShop.removeName += RemoveName;
         m_isBulding = false;
        
+    }
+
+    private void OnDestroy()
+    {
+        ClickableImage.Name -= Clicked;
+        ShowShop.removeName -= RemoveName;
     }
 
     void Update()
@@ -21,29 +30,41 @@ public class CreateBulding : MonoBehaviour
         
     }
 
+    public void RemoveName()
+    {
+        _buldingName = null;
+    }
+
     private void OnMouseDown()
     {
-
         if (CompareTag("AreaBuild") && !m_isBulding)
         {
-            int rand = UnityEngine.Random.Range(0, 2);
-            switch(rand)
+            _buldingName = gameObject.name;
+            _showShop.OpenMenu();
+        }
+    }
+
+    public void Clicked(string name)
+    {
+        if (CompareTag("AreaBuild") && !m_isBulding && _buldingName != null)
+        {
+            switch (name)
             {
-                case 0:
+                case "Church":
                     m_isBulding = true;
                     bulding = Instantiate(_bulding[0]);
                     break;
-                case 1:
+                case "Field":
                     m_isBulding = true;
                     bulding = Instantiate(_bulding[1]);
                     break;
-                case 2:
+                case "Hostel":
                     m_isBulding = true;
                     bulding = Instantiate(_bulding[2]);
-
                     break;
 
             }
+            bulding.transform.SetParent(transform.parent);
             bulding.transform.position = transform.position;
         }
     }

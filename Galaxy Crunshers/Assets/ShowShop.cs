@@ -13,6 +13,7 @@ public class ShowShop : MonoBehaviour
     [SerializeField] TextMeshProUGUI ShopTitle;
     [SerializeField] GameObject ShopBackground;
     public static event Action reload;
+    public static event Action removeName;
     public void OpenMenu()
     {
         OpenButton.SetActive(false);
@@ -30,5 +31,6 @@ public class ShowShop : MonoBehaviour
         ShopTitle.enabled = false;
         ShopBackground.SetActive(false);
         reload?.Invoke();
+        removeName?.Invoke();
     }
 }
