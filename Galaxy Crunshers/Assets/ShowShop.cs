@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,13 +7,30 @@ using UnityEngine.UI;
 
 public class ShowShop : MonoBehaviour
 {
-    [SerializeField] Button Ui;
-    [SerializeField] TextMeshPro ShopTitle;
+    [SerializeField] GameObject OpenButton;
+    [SerializeField] GameObject CloseButton;
+    [SerializeField] GameObject Map;
+    [SerializeField] TextMeshProUGUI ShopTitle;
     [SerializeField] GameObject ShopBackground;
-
-    void OpenMenu()
+    public static event Action reload;
+    public static event Action removeName;
+    public void OpenMenu()
     {
-        Ui.;
-        ShopTitle.GetComponent;
+        OpenButton.SetActive(false);
+        CloseButton.SetActive(true);
+        Map.SetActive(false);
+        ShopTitle.enabled = true;
+        ShopBackground.SetActive(true);
+    }
+
+    public void CloseShop()
+    {
+        OpenButton.SetActive(true);
+        CloseButton.SetActive(false);
+        Map.SetActive(true);
+        ShopTitle.enabled = false;
+        ShopBackground.SetActive(false);
+        reload?.Invoke();
+        removeName?.Invoke();
     }
 }

@@ -9,17 +9,28 @@ public class Move : MonoBehaviour
     public float Speed;
 
     public int _delayDirection = 5;
-    public int _delayStop = 5;
+    public int _delayStop = 2;
     private float x;
     private float y;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(OnMove());
+        ShowShop.reload += reload;
+        StartCoroutine(Idle());
+    }
+
+    private void OnDestroy()
+    {
+        ShowShop.reload -= reload;
     }
 
     // Update is called once per frame
+
+    public void reload()
+    {
+        StartCoroutine(Idle());
+    }
 
     IEnumerator Idle()
     {
