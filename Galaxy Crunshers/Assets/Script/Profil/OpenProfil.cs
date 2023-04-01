@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.Profiling;
 
 public class OpenProfil : MonoBehaviour
 {
     [SerializeField] private bool profilOpen = false;
-    /*[SerializeField] private GameObject profil;*/
+    public static event Action<bool> OnOpenProfil;
 
     public void OpenProfilPlayer()
     {
@@ -17,6 +18,10 @@ public class OpenProfil : MonoBehaviour
             foreach (SpriteRenderer profil in profils)
             {
                 profil.GetComponent<SpriteRenderer>().enabled = true;
+            }
+            if(profilOpen == false)
+            {
+                OnOpenProfil?.Invoke(profilOpen);
             }
             profilOpen = true;
         }
