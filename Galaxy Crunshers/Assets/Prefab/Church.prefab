@@ -276,6 +276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5bb450009e1bbd4c8a02d8ee595734c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isBuilding: 0
+  _building: []
+  _showShop: {fileID: 0}
   m_text: {fileID: 3113040454922426856}
   m_endTimer: 820
 --- !u!61 &2767852233994020289

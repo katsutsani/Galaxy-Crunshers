@@ -12,6 +12,7 @@ public class Move : MonoBehaviour
     public int _delayStop = 2;
     private float x;
     private float y;
+    private int _direction =-1;
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +60,13 @@ public class Move : MonoBehaviour
 
     void ChangeDir()
     {
-        int direction = UnityEngine.Random.Range(0, 3);
+        int direction;
+        do
+        {
+            direction = UnityEngine.Random.Range(0, 3);
+        } while (direction == _direction);
+       _direction = direction;
+
         switch (direction)
         {
             case 0:

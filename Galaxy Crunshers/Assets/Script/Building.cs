@@ -7,12 +7,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class Bulding : CreateBulding
+public class Building : CreateBuilding
 {
 
     public TextMeshPro m_text;
     public float m_endTimer;
-
+    public GameObject _actualArea;
 
     void Start()
     {
@@ -28,7 +28,7 @@ public class Bulding : CreateBulding
 
     private void SetTimer()
     {
-        if(!m_isBulding)
+        if(!m_isBuilding)
         {
             float time = 0;
             time += Time.deltaTime;
@@ -50,6 +50,12 @@ public class Bulding : CreateBulding
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         transform.position = mousePosition;
+
+        if(_actualArea != null)
+        {
+            _actualArea.GetComponent<CreateBuilding>().m_isBuilding = false;
+            _actualArea = null;
+        }
     }
 
 
