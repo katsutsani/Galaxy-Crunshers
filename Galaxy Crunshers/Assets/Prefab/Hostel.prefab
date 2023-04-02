@@ -458,7 +458,8 @@ MonoBehaviour:
   _newSprite:
   - {fileID: 21300000, guid: 48882e21b5cba164cba135a76a411a82, type: 3}
   - {fileID: 21300000, guid: 1285cacc33812664dbdf2ea6dc1897b6, type: 3}
-  _goldLoad: 0
+  _goldLoad: 20
+  _reputLoad: 7
   _particle: {fileID: 1262572411959958015}
   _particleGold: {fileID: 5972587135597311633, guid: 7c7b4642f558de145b4f844f786e1651, type: 3}
 --- !u!61 &2767852233994020289

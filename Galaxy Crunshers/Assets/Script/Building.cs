@@ -24,7 +24,9 @@ public class Building : CreateBuilding
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite[] _newSprite;
     private int _goldSave;
+    private int _reputSave;
     [SerializeField] private int _goldLoad;
+    [SerializeField] private int _reputLoad;
     private bool _isMouseDown;
 
 
@@ -32,12 +34,13 @@ public class Building : CreateBuilding
     public ParticleSystem _particle;
     public ParticleSystem _particleGold;
     public static event Action<int> UpgradeGold;
+    public static event Action<int> UpgradeRep;
 
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        //_particleGold = GetComponent<ParticleSystem>();
+        _particleGold = GetComponent<ParticleSystem>();
         _spriteRenderer.color = Color.white;
         _isMouseDown= false;
     }
@@ -78,12 +81,15 @@ public class Building : CreateBuilding
         {
             _spriteRenderer.sprite = _newSprite[1];
             StartCoroutine(GainGold());
+            StartCoroutine(GainReput());
             Destroy(m_text);
             if (_isMouseDown)
             {
                 UpgradeGold?.Invoke(_goldSave);
+                UpgradeRep?.Invoke(_reputSave);
                 _isMouseDown = false;
                 _goldSave = 0;
+                _reputSave = 0;
                 _particleGold.Play();
             }
         }
@@ -113,12 +119,15 @@ public class Building : CreateBuilding
                     Destroy(m_text);
                     _particle.Play();
                     StartCoroutine(GainGold());
+                    StartCoroutine(GainReput());
                     if (_isMouseDown)
                     {
-                        _particleGold.Play();
                         UpgradeGold?.Invoke(_goldSave);
+                        UpgradeRep?.Invoke(_reputSave);
                         _isMouseDown = false;
                         _goldSave = 0;
+                        _reputSave = 0;
+                        _particleGold.Play();
                     }
                 }
             }
@@ -128,10 +137,59 @@ public class Building : CreateBuilding
 
     IEnumerator GainGold() 
     {
-        yield return new WaitForSeconds(2);
-        _goldSave += _goldLoad;
-        StopAllCoroutines();
-        StartCoroutine(GainGold());
+        yield return new WaitForSeconds(60);
+        switch (tag)
+        {
+            case "Champ":
+                _goldLoad *= GameInfo.GetComponent<GameInfo>().Paysan;
+                _goldSave += _goldLoad;
+                StopAllCoroutines();
+                StartCoroutine(GainGold());
+                break;
+
+            case "Auberge":
+                _goldLoad *= GameInfo.GetComponent<GameInfo>().Aubergiste;
+                _goldSave += _goldLoad;
+                StopAllCoroutines();
+                StartCoroutine(GainGold());
+                break;
+
+            case "Eglise":
+                _goldLoad *= GameInfo.GetComponent<GameInfo>().Pretre;
+                _goldSave += _goldLoad;
+                StopAllCoroutines();
+                StartCoroutine(GainGold());
+                break;
+        }
+        
+    }
+
+    IEnumerator GainReput()
+    {
+        yield return new WaitForSeconds(60);
+        switch (tag)
+        {
+            case "Champ":
+                _reputLoad *= GameInfo.GetComponent<GameInfo>().Paysan;
+                _reputSave += _reputLoad;
+                StopAllCoroutines();
+                StartCoroutine(GainReput());
+                break;
+
+            case "Auberge":
+                _reputLoad *= GameInfo.GetComponent<GameInfo>().Aubergiste;
+                _reputSave += _reputLoad;
+                StopAllCoroutines();
+                StartCoroutine(GainReput());
+                break;
+
+            case "Eglise":
+                _reputLoad *= GameInfo.GetComponent<GameInfo>().Pretre;
+                _reputSave += _reputLoad;
+                StopAllCoroutines();
+                StartCoroutine(GainReput());
+                break;
+        }
     }
 
 
