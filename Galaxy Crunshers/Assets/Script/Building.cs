@@ -20,7 +20,11 @@ public class Building : CreateBuilding
     private Collider2D _pCol;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite[] _newSprite;
+<<<<<<< Updated upstream
     public static event Action<int> DimondPrice;
+=======
+    [SerializeField] private ParticleSystem _particle;
+>>>>>>> Stashed changes
 
     private void Awake()
     {
@@ -50,10 +54,7 @@ public class Building : CreateBuilding
     void Update()
     {
         SetTimer();
-        if(m_endTimer <= 0)
-        {
-            _spriteRenderer.sprite = _newSprite[1];
-        }
+        
     }
 
 
@@ -74,6 +75,12 @@ public class Building : CreateBuilding
                     m_text.text = minute.ToString() + ":" + "0" + second.ToString();
                 else
                     m_text.text = minute.ToString() + ":" + second.ToString();
+                if (m_endTimer <= 0.01)
+                {                  
+                    _spriteRenderer.sprite = _newSprite[1];
+                    Destroy(m_text);
+                    _particle.Play();
+                }
             }            
         }
     }
