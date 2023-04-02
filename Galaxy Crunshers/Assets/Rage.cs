@@ -7,6 +7,7 @@ public class Rage : MonoBehaviour
     public GameObject GameInfo;
     [SerializeField] private AudioClip enerve;
     private AudioSource enerveSource = null;
+    bool Raged = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +29,21 @@ public class Rage : MonoBehaviour
                     {
                         array[i].gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                         array[i].gameObject.GetComponent<Move>().Speed = 20;
+                        array[i].gameObject.GetComponent<Rage>().Raged = true;
                     }
                     enerveSource.PlayOneShot(enerve);
                 }
 
             }
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        if (Raged)
+        {
+            Destroy(gameObject);
+            GameInfo.GetComponent<GameInfo>().Paysan--;
         }
     }
 }

@@ -40,7 +40,7 @@ public class OpenProfil : MonoBehaviour
         {
             goal4 = true;
         }
-        if (GameInfo.GetComponent<GameInfo>().Jouvencelle >= 1)
+        if (GameInfo.GetComponent<GameInfo>().Barde >= 1)
         {
             goal5 = true;
         }

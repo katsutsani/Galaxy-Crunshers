@@ -36,6 +36,8 @@ TagManager:
   - Quest5
   - Quest6
   - Quest7
+  - Barde
+  - 4Character
   layers:
   - Default
   - TransparentFX

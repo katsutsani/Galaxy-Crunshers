@@ -48,7 +48,7 @@ public class AddCharacter : MonoBehaviour
                 }
                 break;
             case "2Character":
-                if (GameInfo.GetComponent<GameInfo>().Jouvencelle != 1)
+                if (GameInfo.GetComponent<GameInfo>().Barde != 1)
                 {
                     _instanceCharacter = Instantiate(_character[2]);
                     price = 100;
@@ -59,6 +59,14 @@ public class AddCharacter : MonoBehaviour
                 if (GameInfo.GetComponent<GameInfo>().Aubergiste != 1)
                 {
                     _instanceCharacter = Instantiate(_character[3]);
+                    price = 100;
+                    OnCharacterAdded?.Invoke(price);
+                }
+                break;
+            case "4Character":
+                if (GameInfo.GetComponent<GameInfo>().Jouvencelle != 1)
+                {
+                    _instanceCharacter = Instantiate(_character[4]);
                     price = 100;
                     OnCharacterAdded?.Invoke(price);
                 }

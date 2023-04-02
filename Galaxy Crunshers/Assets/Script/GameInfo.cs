@@ -11,6 +11,7 @@ public class GameInfo : MonoBehaviour
     public int Pretre = 0;
     public int Jouvencelle = 0;
     public int Aubergiste= 0;
+    public int Barde = 0;
 
     public int Champ = 1;
     public int Auberge = 0;
@@ -27,6 +28,7 @@ public class GameInfo : MonoBehaviour
         Pretre = 0;
         Jouvencelle = 0;
         Aubergiste = 0;
+        Barde = 0;
         if (_allCharacter != null)
         {
             Transform[] array = _allCharacter.GetComponentsInChildren<Transform>();
@@ -45,6 +47,9 @@ public class GameInfo : MonoBehaviour
                         break;
                     case "Aubergiste":
                         Aubergiste++;
+                        break;
+                    case "Barde":
+                        Barde++;
                         break;
                 }
             }
