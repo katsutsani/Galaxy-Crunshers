@@ -19,6 +19,11 @@ public class Gold : MonoBehaviour
         gold -= price;
     }
 
+    private void OnDisable()
+    {
+        AddCharacter.OnCharacterAdded -= AddCharacter_OnCharacterAdded;
+    }
+
     private void Update()
     {
         gold_num.text = gold.ToString();

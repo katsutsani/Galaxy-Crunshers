@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,6 +20,7 @@ public class Building : CreateBuilding
     private Collider2D _pCol;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite[] _newSprite;
+    public static event Action<int> DimondPrice;
 
     private void Awake()
     {
@@ -31,6 +33,18 @@ public class Building : CreateBuilding
          m_text.GetComponent<TextMeshPro>();
         _isArea = true;
         _isChange = false;
+        UseDiamonds.StopTimer += UseDiamonds_StopTimer;
+    }
+
+    public void UseDiamonds_StopTimer(bool obj)
+    {
+        if (obj == true)
+        {
+            float timerDiamond = m_endTimer;
+            int priceDiamond = Mathf.Max(1, (int)timerDiamond / 60 * 2);
+            DimondPrice?.Invoke(priceDiamond);
+            m_endTimer = 0;
+        }
     }
 
     void Update()
@@ -53,6 +67,7 @@ public class Building : CreateBuilding
             {
                 _spriteRenderer.sprite = _newSprite[0];
                 m_endTimer -= time;
+                //m_endTimer = 0;
                 int minute = (int)m_endTimer / 60;
                 int second = (int)m_endTimer % 60;
                 if(second < 10)
