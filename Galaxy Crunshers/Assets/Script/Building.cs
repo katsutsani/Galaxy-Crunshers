@@ -23,7 +23,7 @@ public class Building : CreateBuilding
     [SerializeField] private Sprite[] _newSprite;
     public static event Action<int> DimondPrice;
     [SerializeField] private ParticleSystem _particle;
-    public bool Collect = false;
+    public bool Collect;
 
     private void Awake()
     {
@@ -64,8 +64,10 @@ public class Building : CreateBuilding
         if (m_endTimer <= 0.1)
         {
             _spriteRenderer.sprite = _newSprite[1];
+            Debug.Log(Collect);
             Destroy(m_text);
             _particle.Play();
+
         }
     }
 
@@ -97,6 +99,7 @@ public class Building : CreateBuilding
         }
         if (!Collect && m_isBuilding)
         {
+            m_text.enabled = false;
             float time = 0;
             time += Time.deltaTime;
             if (time < 10)
@@ -113,6 +116,7 @@ public class Building : CreateBuilding
                 {
                     Debug.Log("recolt");
                     Collect = true;
+                    m_text.enabled = false;
                     m_endTimer = 10;
                 }
             }

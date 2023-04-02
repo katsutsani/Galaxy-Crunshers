@@ -28,6 +28,7 @@ TagManager:
   - Auberge
   - Eglise
   - GameInfo
+  - AllCharacters
   layers:
   - Default
   - TransparentFX

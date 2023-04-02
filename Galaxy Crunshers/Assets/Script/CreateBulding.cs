@@ -58,14 +58,14 @@ public class CreateBuilding : MonoBehaviour
             switch (tag)
             {
                 case "0Building":
-                    if(GameInfo.GetComponent<GameInfo>().Champ != 2)
+                    if(GameInfo.GetComponent<GameInfo>().Eglise != 1)
                     {
                         m_isBuilding = true;
                         building = Instantiate(_building[0]);
                     }
                     break;
                 case "1Building":
-                    if (GameInfo.GetComponent<GameInfo>().Eglise != 1)
+                    if (GameInfo.GetComponent<GameInfo>().Champ != 2)
                     {
                         m_isBuilding = true;
                         building = Instantiate(_building[1]);
@@ -80,10 +80,14 @@ public class CreateBuilding : MonoBehaviour
                     break;
 
             }
-            building.transform.SetParent(m_allBuldings.transform);
-            building.transform.position = transform.position;
-            building.GetComponent<Building>().m_actualArea = gameObject;
-            CountBuild?.Invoke();
+            if(building!= null)
+            {
+                building.transform.SetParent(m_allBuldings.transform);
+                building.transform.position = transform.position;
+                building.GetComponent<Building>().m_actualArea = gameObject;
+                CountBuild?.Invoke();
+            }
+           
         }
     }
 }

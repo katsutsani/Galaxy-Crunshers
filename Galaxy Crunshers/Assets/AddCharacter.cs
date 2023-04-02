@@ -48,7 +48,7 @@ public class AddCharacter : MonoBehaviour
                 }
                 break;
             case "2Character":
-                if (GameInfo.GetComponent<GameInfo>().Pretre != 1)
+                if (GameInfo.GetComponent<GameInfo>().Jouvencelle != 1)
                 {
                     _instanceCharacter = Instantiate(_character[2]);
                     price = 100;
