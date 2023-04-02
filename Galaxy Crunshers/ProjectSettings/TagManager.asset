@@ -16,6 +16,10 @@ TagManager:
   - 0Diamonds
   - 1Diamonds
   - 2Diamonds
+  - 0
+  - 1
+  - 2
+  - Diamond
   layers:
   - Default
   - TransparentFX
