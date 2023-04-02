@@ -1174,6 +1174,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &454942230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 474341015085581097, guid: c5b7312efc45ce14b90437e04136f0d7, type: 3}
+  m_PrefabInstance: {fileID: 1423487521}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &480150705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,6 +2802,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4348211268363784340, guid: c5b7312efc45ce14b90437e04136f0d7, type: 3}
+      propertyPath: PaysanInfo
+      value: 
+      objectReference: {fileID: 454942230}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
