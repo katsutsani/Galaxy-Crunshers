@@ -34,12 +34,18 @@ public class AddCharacter : MonoBehaviour
                 break;
             case "1Character":
                 _instanceCharacter = Instantiate(_character[1]);
+                price = 100;
+                OnCharacterAdded?.Invoke(price);
                 break;
             case "2Character":
                 _instanceCharacter = Instantiate(_character[2]);
+                price = 100;
+                OnCharacterAdded?.Invoke(price);
                 break;
             case "3Character":
                 _instanceCharacter = Instantiate(_character[3]);
+                price = 100;
+                OnCharacterAdded?.Invoke(price);
                 break;
 
         }
