@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 474341015085581097, guid: c5b7312efc45ce14b90437e04136f0d7, type: 3}
       propertyPath: m_Name
-      value: Paysan (1) Variant
+      value: RagedPaysan
       objectReference: {fileID: 0}
     - target: {fileID: 1435947042006958552, guid: c5b7312efc45ce14b90437e04136f0d7, type: 3}
       propertyPath: m_Color.b

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Rage : MonoBehaviour
 {
     public GameObject GameInfo;
+    [SerializeField] private AudioClip enerve;
+    private AudioSource enerveSource = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,7 @@ public class Rage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        enerveSource = GetComponent<AudioSource>();
         if (GameInfo.GetComponent<GameInfo>().Paysan > 1)
         {
             if (GameInfo.GetComponent<GameInfo>().Paysan > GameInfo.GetComponent<GameInfo>().Champ + 2)
@@ -26,6 +29,7 @@ public class Rage : MonoBehaviour
                         array[i].gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                         array[i].gameObject.GetComponent<Move>().Speed = 20;
                     }
+                    enerveSource.PlayOneShot(enerve);
                 }
 
             }
