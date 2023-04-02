@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5173716401527099306}
   - component: {fileID: 7996893568076688265}
   - component: {fileID: 964522763101449614}
+  - component: {fileID: 1318556522253515399}
   m_Layer: 0
   m_Name: Square
   m_TagString: Diamond
@@ -149,6 +150,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Prefab: {fileID: 2521420657952365736}
+  _spriteR: {fileID: 0}
+--- !u!114 &1318556522253515399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2521420657952365736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a60ea9c899ffd40a8e50784e3ee644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6856664987219274308
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,14 +446,16 @@ MonoBehaviour:
   _building: []
   _showShop: {fileID: 0}
   m_allBuldings: {fileID: 0}
+  GameInfo: {fileID: 0}
   m_text: {fileID: 3113040454922426856}
   m_endTimer: 10
   m_actualArea: {fileID: 0}
   _spriteRenderer: {fileID: 0}
   _newSprite:
   - {fileID: 21300000, guid: 48882e21b5cba164cba135a76a411a82, type: 3}
-  - {fileID: 21300000, guid: 387a3e78927da4546a799f5fa7664d66, type: 3}
+  - {fileID: 21300000, guid: 4bddb277a44722747bae6801f838ead3, type: 3}
   _particle: {fileID: 4631657525001804055}
+  Collect: 0
 --- !u!61 &2767852233994020289
 BoxCollider2D:
   m_ObjectHideFlags: 0
