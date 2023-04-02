@@ -21,8 +21,10 @@ public class Building : CreateBuilding
     private Collider2D _pCol;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite[] _newSprite;
+
+
     public static event Action<int> DimondPrice;
-    [SerializeField] private ParticleSystem _particle;
+    public ParticleSystem _particle;
     public bool Collect;
 
     private void Awake()
@@ -48,6 +50,8 @@ public class Building : CreateBuilding
             int priceDiamond = Mathf.Max(1, (int)timerDiamond / 60 * 2);
             DimondPrice?.Invoke(priceDiamond);
             m_endTimer = 0;
+            _particle.Play();
+
         }
     }
     private void OnDisable()
@@ -61,12 +65,11 @@ public class Building : CreateBuilding
 
 
         SetTimer();
-        if (m_endTimer <= 0.1)
+        if (m_endTimer == 0)
         {
             _spriteRenderer.sprite = _newSprite[1];
             Debug.Log(Collect);
             Destroy(m_text);
-            _particle.Play();
 
         }
     }

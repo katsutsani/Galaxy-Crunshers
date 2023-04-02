@@ -5,8 +5,13 @@ using UnityEngine.UI;
 public class Gold : MonoBehaviour
 {
     public Text gold_num;
-    int gold = 10000000;
-    private int price = 0;
+    int gold;
+    private int price;
+
+    private void Awake()
+    {
+        gold = 50000;
+    }
 
     private void Start()
     {
