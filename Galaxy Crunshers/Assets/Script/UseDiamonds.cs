@@ -23,7 +23,7 @@ public class UseDiamonds : MonoBehaviour
             timerSet = true;
             Timer?.Invoke(timerSet);
             StopTimer?.Invoke(timerSet);
-            _buildScript._particle.Play();
+            //_buildScript._particle.Play();
         }
     }
 }

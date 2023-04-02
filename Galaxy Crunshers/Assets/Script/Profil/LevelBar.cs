@@ -7,6 +7,15 @@ public class LevelBar : MonoBehaviour
     [SerializeField] private float lvl = 0f;
     private float max_lvl = 500f;
 
+    private void Start()
+    {
+        GoalFinish.AddReputation += addReput;
+    }
+
+    public void addReput(int quantity)
+    {
+        lvl += quantity; 
+    }
     private void Update()
     {
         // lvl_bar.size = 1 (0 xp)

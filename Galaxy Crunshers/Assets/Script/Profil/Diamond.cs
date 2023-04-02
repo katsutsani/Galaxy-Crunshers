@@ -11,7 +11,13 @@ public class Diamond : MonoBehaviour
 
     private void Start()
     {
+        GoalFinish.AddDiamond += addDiamond;
         Building.DimondPrice += Building_DimondPrice;
+    }
+
+    private void addDiamond(int quantity)
+    {
+        diamond += quantity;
     }
 
     private void Building_DimondPrice(int buy)
