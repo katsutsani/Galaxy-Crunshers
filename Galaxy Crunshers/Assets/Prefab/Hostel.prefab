@@ -453,12 +453,14 @@ MonoBehaviour:
   m_text: {fileID: 3113040454922426856}
   m_endTimer: 540
   m_actualArea: {fileID: 0}
+  m_scriptGold: {fileID: 0}
   _spriteRenderer: {fileID: 0}
   _newSprite:
   - {fileID: 21300000, guid: 48882e21b5cba164cba135a76a411a82, type: 3}
   - {fileID: 21300000, guid: 1285cacc33812664dbdf2ea6dc1897b6, type: 3}
+  _goldLoad: 0
   _particle: {fileID: 1262572411959958015}
-  Collect: 0
+  _particleGold: {fileID: 5972587135597311633, guid: 7c7b4642f558de145b4f844f786e1651, type: 3}
 --- !u!61 &2767852233994020289
 BoxCollider2D:
   m_ObjectHideFlags: 0
