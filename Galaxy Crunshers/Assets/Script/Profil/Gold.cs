@@ -11,6 +11,7 @@ public class Gold : MonoBehaviour
 
     private void Start()
     {
+        GoalFinish.AddGold += Building_UpgradeGold;
         AddCharacter.OnCharacterAdded += AddCharacter_OnCharacterAdded;
         Building.UpgradeGold += Building_UpgradeGold;
         gold = 500000;
