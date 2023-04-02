@@ -1,13 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Build;
 using UnityEngine;
-using UnityEngine.Events;
-using static UnityEngine.GridBrushBase;
 
 
 public class Building : CreateBuilding
@@ -137,7 +131,7 @@ public class Building : CreateBuilding
 
     IEnumerator GainGold() 
     {
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(10);
         switch (tag)
         {
             case "Champ":
@@ -166,7 +160,7 @@ public class Building : CreateBuilding
 
     IEnumerator GainReput()
     {
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(10);
         switch (tag)
         {
             case "Champ":

@@ -11,6 +11,10 @@ public class Rage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (gameObject.name.Contains("RagedPaysan"))
+        {
+            Raged= true;
+        }
         GameInfo = GameObject.FindGameObjectWithTag("GameInfo");
     }
 
