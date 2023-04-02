@@ -20,6 +20,10 @@ TagManager:
   - 1
   - 2
   - Diamond
+  - Paysan
+  - Pretre
+  - Jouvencelle
+  - Aubergiste
   layers:
   - Default
   - TransparentFX

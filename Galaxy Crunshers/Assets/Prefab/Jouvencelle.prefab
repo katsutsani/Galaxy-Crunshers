@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1336890319059449341}
   - component: {fileID: 2162429044673839431}
   - component: {fileID: 8442072489592446771}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Jouvencelle
-  m_TagString: Untagged
+  m_TagString: Jouvencelle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

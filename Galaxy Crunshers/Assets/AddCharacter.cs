@@ -11,6 +11,7 @@ public class AddCharacter : MonoBehaviour
     [SerializeField] private GameObject[] _character;
     public static event Action<int> OnCharacterAdded;
     private int price;
+    public static event Action CountChar;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,7 @@ public class AddCharacter : MonoBehaviour
         }
         _instanceCharacter.transform.SetParent(transform);
         _instanceCharacter.transform.position = Vector3.zero;
+        CountChar?.Invoke();
 
     }
 }

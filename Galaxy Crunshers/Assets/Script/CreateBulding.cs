@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ public class CreateBuilding : MonoBehaviour
     private GameObject building;
     private string _buildingName;
     public GameObject m_allBuldings;
+    public static event Action CountBuild;
 
 
     void Start()
@@ -70,6 +72,7 @@ public class CreateBuilding : MonoBehaviour
             building.transform.SetParent(m_allBuldings.transform);
             building.transform.position = transform.position;
             building.GetComponent<Building>().m_actualArea = gameObject;
+            CountBuild?.Invoke();
         }
     }
 }
