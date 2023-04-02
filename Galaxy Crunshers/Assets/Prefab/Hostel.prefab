@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 311903767350263255}
   m_Layer: 0
   m_Name: Hostel
-  m_TagString: Bulding
+  m_TagString: Auberge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

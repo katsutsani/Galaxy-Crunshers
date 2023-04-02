@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1292163885276910302}
   - component: {fileID: 1186400268280793142}
   - component: {fileID: 4984129102575404538}
+  - component: {fileID: 4348211268363784340}
   m_Layer: 6
   m_Name: Paysan
   m_TagString: Paysan
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!212 &1435947042006958552
 SpriteRenderer:
@@ -164,3 +165,15 @@ MonoBehaviour:
   Speed: 2
   _delayDirection: 5
   _delayStop: 2
+--- !u!114 &4348211268363784340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474341015085581097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb8303323bdaa048aab077d5b91e72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

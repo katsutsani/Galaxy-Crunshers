@@ -12,10 +12,12 @@ public class AddCharacter : MonoBehaviour
     public static event Action<int> OnCharacterAdded;
     private int price;
     public static event Action CountChar;
+    public GameObject GameInfo;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameInfo = GameObject.FindGameObjectWithTag("GameInfo");
         ClickableImage.tagCharacter += BuyCharacter;
     }
 
@@ -29,24 +31,37 @@ public class AddCharacter : MonoBehaviour
         switch (tag)
         {
             case "0Character":
-                _instanceCharacter = Instantiate(_character[0]);
-                price = 100;
-                OnCharacterAdded?.Invoke(price);
+                if (GameInfo.GetComponent<GameInfo>().Paysan != 6)
+                {
+                    _instanceCharacter = Instantiate(_character[0]);
+                    price = 100;
+                    OnCharacterAdded?.Invoke(price);
+                }
+                
                 break;
             case "1Character":
-                _instanceCharacter = Instantiate(_character[1]);
-                price = 100;
-                OnCharacterAdded?.Invoke(price);
+                if (GameInfo.GetComponent<GameInfo>().Pretre != 2)
+                {
+                    _instanceCharacter = Instantiate(_character[1]);
+                    price = 100;
+                    OnCharacterAdded?.Invoke(price);
+                }
                 break;
             case "2Character":
-                _instanceCharacter = Instantiate(_character[2]);
-                price = 100;
-                OnCharacterAdded?.Invoke(price);
+                if (GameInfo.GetComponent<GameInfo>().Pretre != 1)
+                {
+                    _instanceCharacter = Instantiate(_character[2]);
+                    price = 100;
+                    OnCharacterAdded?.Invoke(price);
+                }
                 break;
             case "3Character":
-                _instanceCharacter = Instantiate(_character[3]);
-                price = 100;
-                OnCharacterAdded?.Invoke(price);
+                if (GameInfo.GetComponent<GameInfo>().Aubergiste != 1)
+                {
+                    _instanceCharacter = Instantiate(_character[3]);
+                    price = 100;
+                    OnCharacterAdded?.Invoke(price);
+                }
                 break;
 
         }

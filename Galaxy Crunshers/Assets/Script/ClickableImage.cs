@@ -9,6 +9,8 @@ public class ClickableImage : MonoBehaviour
     public static event Action<string> tagCharacter;
     public static event Action<string> tagDiamond;
 
+
+
     public void GetClicked()
     {
         if (gameObject.tag.Contains("Building")) 

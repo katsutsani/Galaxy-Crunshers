@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.GridBrushBase;
@@ -22,6 +23,7 @@ public class Building : CreateBuilding
     [SerializeField] private Sprite[] _newSprite;
     public static event Action<int> DimondPrice;
     [SerializeField] private ParticleSystem _particle;
+    public bool Collect = false;
 
     private void Awake()
     {
@@ -54,8 +56,11 @@ public class Building : CreateBuilding
 
     void Update()
     {
+
+
+
         SetTimer();
-        if(m_endTimer <= 0.1)
+        if (m_endTimer <= 0.1)
         {
             _spriteRenderer.sprite = _newSprite[1];
             Destroy(m_text);
@@ -89,21 +94,88 @@ public class Building : CreateBuilding
                 }
             }
         }
+        if (!Collect && m_isBuilding)
+        {
+            float time = 0;
+            time += Time.deltaTime;
+            if (time < 10)
+            {
+                m_endTimer -= time;
+                //m_endTimer = 0;
+                int minute = (int)m_endTimer / 60;
+                int second = (int)m_endTimer % 60;
+                if (second < 10)
+                    m_text.text = minute.ToString() + ":" + "0" + second.ToString();
+                else
+                    m_text.text = minute.ToString() + ":" + second.ToString();
+                if (m_endTimer <= 0.01)
+                {
+                    Debug.Log("recolt");
+                    Collect = true;
+                }
+            }
+        }
     }
 
 
 
     void OnMouseDrag()
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        transform.position = mousePosition;
-
-        if (m_actualArea != null && _isArea)
+        if (!Collect)
         {
-            m_actualArea.GetComponent<CreateBuilding>().m_isBuilding = false;
-            _isArea = false;
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            transform.position = mousePosition;
+
+            if (m_actualArea != null && _isArea)
+            {
+                m_actualArea.GetComponent<CreateBuilding>().m_isBuilding = false;
+                _isArea = false;
+            }
         }
+
+    }
+
+    private void OnMouseDown()
+    {
+        if (Collect)
+        {
+            int nbChamp = GameInfo.GetComponent<GameInfo>().Champ;
+            int nbPaysan = GameInfo.GetComponent<GameInfo>().Paysan;
+
+            if (nbChamp == 1)
+            {
+                if (nbPaysan == 1)
+                {
+                    //add 5 per min
+                }
+                else if (nbPaysan == 2)
+                {
+                    //add 10 per min
+                }
+            }
+            if (nbChamp == 2)
+            {
+                if (nbPaysan == 1)
+                {
+                    //add 5 per min
+                }
+                else if (nbPaysan == 2)
+                {
+                    //add 10 per min
+                }
+                else if (nbPaysan == 3)
+                {
+                    //add 15 per min
+                }
+                else if (nbPaysan == 4)
+                {
+                    //add 20 per min
+                }
+            }
+            Collect = false;
+        }
+
     }
 
     private void OnMouseUp()

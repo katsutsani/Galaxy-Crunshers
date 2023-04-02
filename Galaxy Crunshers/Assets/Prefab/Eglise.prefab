@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 2328132200013272102}
   m_Layer: 0
   m_Name: Eglise
-  m_TagString: Bulding
+  m_TagString: Eglise
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

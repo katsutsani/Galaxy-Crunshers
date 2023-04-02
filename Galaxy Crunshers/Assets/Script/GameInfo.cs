@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameInfo : MonoBehaviour
 {
-    [SerializeField] GameObject _allCharacter;
-    [SerializeField] GameObject AllBuilding;
+    [SerializeField] public GameObject _allCharacter;
+    [SerializeField] public GameObject AllBuilding;
 
     public int Paysan =1;
     public int Pretre = 0;

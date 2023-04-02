@@ -24,6 +24,10 @@ TagManager:
   - Pretre
   - Jouvencelle
   - Aubergiste
+  - Champ
+  - Auberge
+  - Eglise
+  - GameInfo
   layers:
   - Default
   - TransparentFX

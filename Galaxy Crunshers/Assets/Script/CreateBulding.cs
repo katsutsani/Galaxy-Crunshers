@@ -13,10 +13,12 @@ public class CreateBuilding : MonoBehaviour
     private string _buildingName;
     public GameObject m_allBuldings;
     public static event Action CountBuild;
+    public GameObject GameInfo;
 
 
     void Start()
     {
+        GameInfo = GameObject.FindGameObjectWithTag("GameInfo");
         ClickableImage.tagBuilding += Clicked;
         ShowShop.removeName += RemoveName;
         m_isBuilding = false;
@@ -56,16 +58,25 @@ public class CreateBuilding : MonoBehaviour
             switch (tag)
             {
                 case "0Building":
-                    m_isBuilding = true;
-                    building = Instantiate(_building[0]);
+                    if(GameInfo.GetComponent<GameInfo>().Champ != 2)
+                    {
+                        m_isBuilding = true;
+                        building = Instantiate(_building[0]);
+                    }
                     break;
                 case "1Building":
-                    m_isBuilding = true;
-                    building = Instantiate(_building[1]);
+                    if (GameInfo.GetComponent<GameInfo>().Eglise != 1)
+                    {
+                        m_isBuilding = true;
+                        building = Instantiate(_building[1]);
+                    }
                     break;
                 case "2Building":
-                    m_isBuilding = true;
-                    building = Instantiate(_building[2]);
+                    if (GameInfo.GetComponent<GameInfo>().Auberge != 1)
+                    {
+                        m_isBuilding = true;
+                        building = Instantiate(_building[2]);
+                    }
                     break;
 
             }
