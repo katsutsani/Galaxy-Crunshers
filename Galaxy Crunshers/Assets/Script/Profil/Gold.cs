@@ -5,17 +5,21 @@ using UnityEngine.UI;
 public class Gold : MonoBehaviour
 {
     public Text gold_num;
-    int gold;
+    public int gold;
     private int price;
 
-    private void Awake()
-    {
-        gold = 50000;
-    }
 
     private void Start()
     {
         AddCharacter.OnCharacterAdded += AddCharacter_OnCharacterAdded;
+        Building.UpgradeGold += Building_UpgradeGold;
+        gold = 500000;
+    }
+
+    private void Building_UpgradeGold(int obj)
+    {
+        price = obj;
+        gold += price;
     }
 
     private void AddCharacter_OnCharacterAdded(int buy)

@@ -15,22 +15,31 @@ public class Building : CreateBuilding
     public TextMeshPro m_text;
     public float m_endTimer;
     public GameObject m_actualArea;
+    public Gold m_scriptGold;
+
 
     private bool _isArea;
     private bool _isChange;
     private Collider2D _pCol;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite[] _newSprite;
+    private int _goldSave;
+    [SerializeField] private int _goldLoad;
+    private bool _isMouseDown;
 
 
     public static event Action<int> DimondPrice;
     public ParticleSystem _particle;
-    public bool Collect;
+    public ParticleSystem _particleGold;
+    public static event Action<int> UpgradeGold;
+
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        //_particleGold = GetComponent<ParticleSystem>();
         _spriteRenderer.color = Color.white;
+        _isMouseDown= false;
     }
 
     void Start()
@@ -40,6 +49,8 @@ public class Building : CreateBuilding
         _isArea = true;
         _isChange = false;
         UseDiamonds.StopTimer += UseDiamonds_StopTimer;
+        _goldSave = 0;
+        
     }
 
     public void UseDiamonds_StopTimer(bool obj)
@@ -61,16 +72,20 @@ public class Building : CreateBuilding
 
     void Update()
     {
-
-
-
+        
         SetTimer();
         if (m_endTimer == 0)
         {
             _spriteRenderer.sprite = _newSprite[1];
-            Debug.Log(Collect);
+            StartCoroutine(GainGold());
             Destroy(m_text);
-
+            if (_isMouseDown)
+            {
+                UpgradeGold?.Invoke(_goldSave);
+                _isMouseDown = false;
+                _goldSave = 0;
+                _particleGold.Play();
+            }
         }
     }
 
@@ -97,94 +112,47 @@ public class Building : CreateBuilding
                     _spriteRenderer.sprite = _newSprite[1];
                     Destroy(m_text);
                     _particle.Play();
+                    StartCoroutine(GainGold());
+                    if (_isMouseDown)
+                    {
+                        _particleGold.Play();
+                        UpgradeGold?.Invoke(_goldSave);
+                        _isMouseDown = false;
+                        _goldSave = 0;
+                    }
                 }
             }
-        }
-        if (!Collect && m_isBuilding)
-        {
-            m_text.enabled = false;
-            float time = 0;
-            time += Time.deltaTime;
-            if (time < 10)
-            {
-                m_endTimer -= time;
-                //m_endTimer = 0;
-                int minute = (int)m_endTimer / 60;
-                int second = (int)m_endTimer % 60;
-                if (second < 10)
-                    m_text.text = minute.ToString() + ":" + "0" + second.ToString();
-                else
-                    m_text.text = minute.ToString() + ":" + second.ToString();
-                if (m_endTimer <= 0.01)
-                {
-                    Debug.Log("recolt");
-                    Collect = true;
-                    m_text.enabled = false;
-                    m_endTimer = 10;
-                }
-            }
-        }
+        }    
     }
 
+
+    IEnumerator GainGold() 
+    {
+        yield return new WaitForSeconds(2);
+        _goldSave += _goldLoad;
+        StopAllCoroutines();
+        StartCoroutine(GainGold());
+    }
 
 
     void OnMouseDrag()
     {
-        if (!Collect)
+
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        transform.position = mousePosition;
+
+        if (m_actualArea != null && _isArea)
         {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            transform.position = mousePosition;
-
-            if (m_actualArea != null && _isArea)
-            {
-                m_actualArea.GetComponent<CreateBuilding>().m_isBuilding = false;
-                _isArea = false;
-            }
+            m_actualArea.GetComponent<CreateBuilding>().m_isBuilding = false;
+            _isArea = false;
         }
 
     }
 
     private void OnMouseDown()
     {
-        if (Collect)
-        {
-            int nbChamp = GameInfo.GetComponent<GameInfo>().Champ;
-            int nbPaysan = GameInfo.GetComponent<GameInfo>().Paysan;
-            Debug.Log("test");
-            if (nbChamp == 1)
-            {
-                if (nbPaysan == 1)
-                {
-                    //add 5 per min
-                }
-                else if (nbPaysan == 2)
-                {
-                    //add 10 per min
-                }
-            }
-            if (nbChamp == 2)
-            {
-                if (nbPaysan == 1)
-                {
-                    //add 5 per min
-                }
-                else if (nbPaysan == 2)
-                {
-                    //add 10 per min
-                }
-                else if (nbPaysan == 3)
-                {
-                    //add 15 per min
-                }
-                else if (nbPaysan == 4)
-                {
-                    //add 20 per min
-                }
-            }
-            Collect = false;
-        }
-
+        _isMouseDown = true;
     }
 
     private void OnMouseUp()
