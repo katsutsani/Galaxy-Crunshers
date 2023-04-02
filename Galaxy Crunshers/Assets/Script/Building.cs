@@ -20,11 +20,8 @@ public class Building : CreateBuilding
     private Collider2D _pCol;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite[] _newSprite;
-<<<<<<< Updated upstream
     public static event Action<int> DimondPrice;
-=======
     [SerializeField] private ParticleSystem _particle;
->>>>>>> Stashed changes
 
     private void Awake()
     {
@@ -34,7 +31,7 @@ public class Building : CreateBuilding
 
     void Start()
     {
-         m_text.GetComponent<TextMeshPro>();
+        m_text.GetComponent<TextMeshPro>();
         _isArea = true;
         _isChange = false;
         UseDiamonds.StopTimer += UseDiamonds_StopTimer;
@@ -50,41 +47,50 @@ public class Building : CreateBuilding
             m_endTimer = 0;
         }
     }
+    private void OnDisable()
+    {
+        UseDiamonds.StopTimer -= UseDiamonds_StopTimer;
+    }
 
     void Update()
     {
         SetTimer();
-        
+        if(m_endTimer <= 0.1)
+        {
+            _spriteRenderer.sprite = _newSprite[1];
+            Destroy(m_text);
+            _particle.Play();
+        }
     }
 
 
     private void SetTimer()
     {
-        if(!m_isBuilding)
+        if (!m_isBuilding)
         {
             float time = 0;
             time += Time.deltaTime;
-            if(time < m_endTimer)
+            if (time < m_endTimer)
             {
                 _spriteRenderer.sprite = _newSprite[0];
                 m_endTimer -= time;
                 //m_endTimer = 0;
                 int minute = (int)m_endTimer / 60;
                 int second = (int)m_endTimer % 60;
-                if(second < 10)
+                if (second < 10)
                     m_text.text = minute.ToString() + ":" + "0" + second.ToString();
                 else
                     m_text.text = minute.ToString() + ":" + second.ToString();
                 if (m_endTimer <= 0.01)
-                {                  
+                {
                     _spriteRenderer.sprite = _newSprite[1];
                     Destroy(m_text);
                     _particle.Play();
                 }
-            }            
+            }
         }
     }
-    
+
 
 
     void OnMouseDrag()
@@ -93,7 +99,7 @@ public class Building : CreateBuilding
 
         transform.position = mousePosition;
 
-        if(m_actualArea != null && _isArea)
+        if (m_actualArea != null && _isArea)
         {
             m_actualArea.GetComponent<CreateBuilding>().m_isBuilding = false;
             _isArea = false;
@@ -122,7 +128,7 @@ public class Building : CreateBuilding
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "AreaBuild")
+        if (collision.tag == "AreaBuild")
         {
             _pCol = collision;
             if (!_pCol.gameObject.GetComponent<CreateBuilding>().m_isBuilding)
@@ -132,7 +138,7 @@ public class Building : CreateBuilding
             else
             {
                 _isChange = false;
-                
+
             }
             _pCol.GetComponent<Collider2D>().enabled = true;
 
