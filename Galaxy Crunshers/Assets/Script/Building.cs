@@ -33,6 +33,7 @@ public class Building : CreateBuilding
 
     void Start()
     {
+        GameInfo = GameObject.FindGameObjectWithTag("GameInfo");
         m_text.GetComponent<TextMeshPro>();
         _isArea = true;
         _isChange = false;
@@ -112,6 +113,7 @@ public class Building : CreateBuilding
                 {
                     Debug.Log("recolt");
                     Collect = true;
+                    m_endTimer = 10;
                 }
             }
         }
@@ -142,7 +144,7 @@ public class Building : CreateBuilding
         {
             int nbChamp = GameInfo.GetComponent<GameInfo>().Champ;
             int nbPaysan = GameInfo.GetComponent<GameInfo>().Paysan;
-
+            Debug.Log("test");
             if (nbChamp == 1)
             {
                 if (nbPaysan == 1)
